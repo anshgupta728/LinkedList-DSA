@@ -95,7 +95,7 @@ public class SingleLinkedList {
 		}
 	}
 	
-	//Deletion at beginning
+	//Deletion at ending
 	private void delete_end() {
 		if(head==null) {
 			System.out.println("Linked List is Empty! Nothing to delete.");
