@@ -1,13 +1,9 @@
 package SingleLinkedList;
+
 public class SingleLinkedList {
 	
 	private static Node head;
 	private static int count;
-	
-	private SingleLinkedList() {
-		head=null;
-		count=0;
-	}
 	
 	public static class Node {
 		int data;
@@ -18,6 +14,11 @@ public class SingleLinkedList {
 		}
 	}
 	
+	private SingleLinkedList() {
+		head=null;
+		count=0;
+	}
+	
 	//Insert at beginning
 	private void insert_begin(int data) {
 		Node toAdd=new Node(data);
@@ -26,7 +27,7 @@ public class SingleLinkedList {
 		count++;
 	}
 	
-	//Insert at middle
+	//Insertion at middle
 	private void insert_middle(int data,int pos) {
 		if(pos==0) {
 			insert_begin(data);
@@ -77,7 +78,10 @@ public class SingleLinkedList {
 	
 	//Deletion at middle
 	private void delete_middle(int pos) {
-		if(pos==0) {
+		if(head==null) {
+			System.out.println("Linked List is Empty! Nothing to delete.");
+		}
+		else if(pos==0) {
 			delete_begin();
 		}
 		else if(pos>0&&pos<count) {
@@ -101,8 +105,7 @@ public class SingleLinkedList {
 			System.out.println("Linked List is Empty! Nothing to delete.");
 		}
 		else if(head.next==null){
-			head=null;
-			count--;
+			delete_begin();
 		}
 		else {
 			Node temp=head;
@@ -112,6 +115,21 @@ public class SingleLinkedList {
 			temp.next=null;
 			count--;
 		}
+	}
+	
+	//Searching an element 
+	private boolean search(int val) {
+		if(head==null) {
+			return false;
+		}
+		Node temp=head;
+		while(temp!=null) {
+			if(temp.data==val) {
+				return true;
+			}
+			temp=temp.next;
+		}
+		return false;
 	}
 	
 	//Print the Linked List
@@ -135,20 +153,19 @@ public class SingleLinkedList {
 	
 	public static void main(String[] args) {
 		SingleLinkedList obj=new SingleLinkedList();
-		obj.insert_end(23);
-		obj.insert_end(24);
-		obj.insert_begin(33);
-		obj.insert_begin(32);
-		obj.insert_begin(31);
-		obj.insert_begin(42);
+		obj.insert_begin(23);
+		obj.insert_begin(24);
+		obj.insert_begin(25);
+		obj.insert_end(26);
 		obj.display();
-		obj.insert_middle(44,3);
+		obj.insert_middle(45, 0);
 		obj.display();
 		obj.delete_begin();
 		obj.display();
+		obj.delete_middle(1);
 		obj.delete_end();
 		obj.display();
-		obj.delete_middle(3);
-		obj.display();
+		System.out.println(obj.search(23));
+		System.out.println(obj.search(26));
 	}
 }
