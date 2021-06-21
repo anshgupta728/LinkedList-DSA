@@ -72,10 +72,10 @@ public class Intersection {
 		Intersection obj=new Intersection();
 		
 		/* List 1:     1->2->3->4
-        						 \
-         						  5->6->null 
-        						 /      
-	       List 2:         	9->10              */
+        			         \
+         			          5->6->null 
+        			         /      
+	           List 2:         9->10              */
 		
 		head1=obj.insert_begin(head1, 6);
 		head1=obj.insert_begin(head1, 5); 
